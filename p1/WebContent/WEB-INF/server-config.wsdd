@@ -1,0 +1,185 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\Users\Harsh\p1\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\p1\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:service name="course" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="del" qname="ns1:del" returnQName="ns1:delReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:cid" type="xsd:string"/>
+  </ns2:operation>
+  <ns1:operation name="add" qname="ns2:add" returnQName="ns2:addReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:cid" type="xsd:string"/>
+   <ns1:parameter qname="ns2:cname" type="xsd:string"/>
+   <ns1:parameter qname="ns2:ctime" type="xsd:string"/>
+   <ns1:parameter qname="ns2:cloc" type="xsd:string"/>
+   <ns1:parameter qname="ns2:empid" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="search" qname="ns3:search" returnQName="ns3:searchReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:id" type="xsd:string"/>
+   <ns1:parameter qname="ns3:Name" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="update" qname="ns4:update" returnQName="ns4:updateReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:cid" type="xsd:string"/>
+   <ns1:parameter qname="ns4:cname" type="xsd:string"/>
+   <ns1:parameter qname="ns4:ctime" type="xsd:string"/>
+   <ns1:parameter qname="ns4:cloc" type="xsd:string"/>
+   <ns1:parameter qname="ns4:empid" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="searchc" qname="ns5:searchc" returnQName="ns5:searchcReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:id" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="update search del add searchc"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="course"/>
+  <ns1:parameter name="className" value="connection.course"/>
+  <ns1:parameter name="wsdlServicePort" value="course"/>
+  <ns1:parameter name="schemaQualified" value="http://connection"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://connection"/>
+  <ns1:parameter name="wsdlServiceElement" value="courseService"/>
+ </ns1:service>
+ <ns1:service name="facullty" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="del" qname="ns6:del" returnQName="ns6:delReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns6:eid" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="add" qname="ns7:add" returnQName="ns7:addReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:eid" type="xsd:int"/>
+   <ns1:parameter qname="ns7:fname" type="xsd:string"/>
+   <ns1:parameter qname="ns7:lname" type="xsd:string"/>
+   <ns1:parameter qname="ns7:street" type="xsd:string"/>
+   <ns1:parameter qname="ns7:city" type="xsd:string"/>
+   <ns1:parameter qname="ns7:state" type="xsd:string"/>
+   <ns1:parameter qname="ns7:zip" type="xsd:int"/>
+   <ns1:parameter qname="ns7:dept" type="xsd:string"/>
+   <ns1:parameter qname="ns7:ofhrs" type="xsd:string"/>
+   <ns1:parameter qname="ns7:instrctd" type="xsd:string"/>
+   <ns1:parameter qname="ns7:cinstrct" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="update" qname="ns8:update" returnQName="ns8:updateReturn" returnType="xsd:string" soapAction="" xmlns:ns8="http://connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns8:eid" type="xsd:int"/>
+   <ns1:parameter qname="ns8:fname" type="xsd:string"/>
+   <ns1:parameter qname="ns8:lname" type="xsd:string"/>
+   <ns1:parameter qname="ns8:street" type="xsd:string"/>
+   <ns1:parameter qname="ns8:city" type="xsd:string"/>
+   <ns1:parameter qname="ns8:state" type="xsd:string"/>
+   <ns1:parameter qname="ns8:zip" type="xsd:int"/>
+   <ns1:parameter qname="ns8:dept" type="xsd:string"/>
+   <ns1:parameter qname="ns8:ofhrs" type="xsd:string"/>
+   <ns1:parameter qname="ns8:instrctd" type="xsd:string"/>
+   <ns1:parameter qname="ns8:cinstrct" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="searchf" qname="ns9:searchf" returnQName="ns9:searchfReturn" returnType="xsd:string" soapAction="" xmlns:ns9="http://connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns9:eid" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="update searchf del add"/>
+  <ns1:parameter name="wsdlPortType" value="facullty"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://connection"/>
+  <ns1:parameter name="wsdlServicePort" value="facullty"/>
+  <ns1:parameter name="className" value="connection.facullty"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://connection"/>
+  <ns1:parameter name="wsdlServiceElement" value="faculltyService"/>
+ </ns1:service>
+ <ns1:service name="Service" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="login" qname="ns10:login" returnQName="ns10:loginReturn" returnType="xsd:string" soapAction="" xmlns:ns10="http://connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns10:user" type="xsd:string"/>
+   <ns1:parameter qname="ns10:pwd" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="time" qname="ns11:time" returnQName="ns11:timeReturn" returnType="xsd:string" soapAction="" xmlns:ns11="http://connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns11:user" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="time login"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="Service"/>
+  <ns1:parameter name="className" value="connection.Service"/>
+  <ns1:parameter name="wsdlServicePort" value="Service"/>
+  <ns1:parameter name="schemaQualified" value="http://connection"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://connection"/>
+  <ns1:parameter name="wsdlServiceElement" value="ServiceService"/>
+ </ns1:service>
+ <ns1:service name="student" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="del" qname="ns12:del" returnQName="ns12:delReturn" returnType="xsd:string" soapAction="" xmlns:ns12="http://connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns12:sid" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="add" qname="ns13:add" returnQName="ns13:addReturn" returnType="xsd:string" soapAction="" xmlns:ns13="http://connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns13:sid" type="xsd:int"/>
+   <ns1:parameter qname="ns13:fname" type="xsd:string"/>
+   <ns1:parameter qname="ns13:lname" type="xsd:string"/>
+   <ns1:parameter qname="ns13:street" type="xsd:string"/>
+   <ns1:parameter qname="ns13:city" type="xsd:string"/>
+   <ns1:parameter qname="ns13:state" type="xsd:string"/>
+   <ns1:parameter qname="ns13:zip" type="xsd:int"/>
+   <ns1:parameter qname="ns13:dept" type="xsd:string"/>
+   <ns1:parameter qname="ns13:ccmpleted" type="xsd:string"/>
+   <ns1:parameter qname="ns13:ctaken" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="update" qname="ns14:update" returnQName="ns14:updateReturn" returnType="xsd:string" soapAction="" xmlns:ns14="http://connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns14:sid" type="xsd:int"/>
+   <ns1:parameter qname="ns14:fname" type="xsd:string"/>
+   <ns1:parameter qname="ns14:lname" type="xsd:string"/>
+   <ns1:parameter qname="ns14:street" type="xsd:string"/>
+   <ns1:parameter qname="ns14:city" type="xsd:string"/>
+   <ns1:parameter qname="ns14:state" type="xsd:string"/>
+   <ns1:parameter qname="ns14:zip" type="xsd:int"/>
+   <ns1:parameter qname="ns14:dept" type="xsd:string"/>
+   <ns1:parameter qname="ns14:ccmpleted" type="xsd:string"/>
+   <ns1:parameter qname="ns14:ctaken" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="searchf" qname="ns15:searchf" returnQName="ns15:searchfReturn" returnType="xsd:string" soapAction="" xmlns:ns15="http://connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns15:sid" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="update searchf del add"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="student"/>
+  <ns1:parameter name="className" value="connection.student"/>
+  <ns1:parameter name="wsdlServicePort" value="student"/>
+  <ns1:parameter name="schemaQualified" value="http://connection"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://connection"/>
+  <ns1:parameter name="wsdlServiceElement" value="studentService"/>
+ </ns1:service>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>
